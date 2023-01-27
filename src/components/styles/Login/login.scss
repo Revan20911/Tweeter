@@ -1,0 +1,18 @@
+.login-wrapper{
+    height: fit-content;
+    width: 30rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: start;
+    box-shadow: 5px 5px 10px black;
+    font-family: sans-serif;
+    border-radius: 10px;
+
+    h1{
+        text-align: center;
+    }
+
+}

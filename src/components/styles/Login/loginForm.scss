@@ -1,0 +1,72 @@
+.login-form{
+
+    
+    
+    width: 20rem;
+    height: 20rem;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    input{
+
+        height: 2rem;
+        width: 16rem;
+        border-radius: 20px;
+        border: 2px solid rgb(206, 202, 202);
+        margin: 10px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    textarea:focus, input:focus{
+
+        border-color: rgb(73, 176, 235);
+        
+    }
+
+    
+
+    
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    height: 100px;
+
+    
+}
+
+button{
+
+    background-color: rgb(73, 176, 235);
+    width: 8rem;
+    height: 2.5rem;
+    border: 0px solid transparent;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 10px auto;
+
+    
+    
+}
+
+button:hover{
+
+    cursor: pointer;
+    background-color: rgb(0, 155, 245) ;
+}
