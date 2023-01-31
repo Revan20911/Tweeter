@@ -1,7 +1,7 @@
 .nav-wrapper{
 
     height: 100vh;
-    width: 10rem;
+    width: fit-content;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -9,6 +9,9 @@
     align-items: center;
     padding-top: 0.5rem;
     border-right: 1px solid rgb(206, 202, 202);
+    font-family: sans-serif;
+
+    padding: 2.5rem;
 
     i{
         height: 3.5rem;
@@ -47,4 +50,48 @@
     }
 
 
+    .icons{
+
+        height: 10rem;
+        width: 10rem;
+
+        margin-bottom: 1.5rem;
+
+        img{
+
+            height: 10rem;
+            width: 10rem;
+
+            
+
+
+        }
+
+        #react{
+            animation: rotate 10s 0s infinite linear;
+            object-fit: scale-down;
+        }
+
+        #sass{
+
+            object-fit: scale-down;
+        }
+
+    }
+
+
+
+
+
+}
+
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    
+    to{
+        transform: rotate(359deg);
+    }
 }

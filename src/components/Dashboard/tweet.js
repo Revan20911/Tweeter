@@ -2,31 +2,18 @@ import { useState, useEffect, useRef } from "react";
 import { BsHeart, BsReply } from "react-icons/bs";
 import ReplyModal from "../Reply/replyModal";
 
+import avatar from "../assets/avatar.webp";
+
 import MessageBox from "./messageBox";
-
-const Tweets  = ({currentUser, setOpen, setCurrentTweet}) => {
-
-    const replyList = useRef(null);
-
-    const [tweets, setTweets] = useState([{
-        user:'',
-        content:'',
-        likes: 0,
-        replies: [],
-        
-    }]);
-
-    const [likes, setLikes] = useState(0);
+import axios from "axios";
 
 
-    function viewReplies(){
 
-        const span = replyList.current;
+const Tweets  = ({currentUser, setOpen, setCurrentTweet, setCurrentUser}) => {
 
-        span.className="replies-visible";
-    }
+    const tweetBox = useRef(null);
 
-
+    const [tweets, setTweets] = useState([]);
 
     useEffect(() => {
 
@@ -46,27 +33,28 @@ const Tweets  = ({currentUser, setOpen, setCurrentTweet}) => {
   
         }
         getTweets();
-    })
+    },[tweets])
+
+    useEffect(() =>{
+        console.log(tweetBox);
+
+
+    }, [])
+
+  
 
     async function like(tweet){
 
-        setLikes(tweet.likes+=1)
 
-        const Num = {likes};
-
-
-        
-
-
-        const response = await fetch(`http://localhost:5000/api/${tweet._id}/like`, {
+        await fetch(`http://localhost:5000/api/${tweet._id}/like`, {
             method: "PUT",
             headers:{
                 "Content-Type" : "application/json"
             },
-            body: JSON.stringify(Num)
+            body: JSON.stringify({likes: tweet.likes+=1})
+            
 
         })
-
     }
 
     function reply(tweet){
@@ -75,26 +63,27 @@ const Tweets  = ({currentUser, setOpen, setCurrentTweet}) => {
 
         setCurrentTweet(tweet)
 
-        console.log(tweet)
-
+        console.log(tweet.img)
 
     }
 
+    
     return (
         <div className="tweet-container">
+           <div className="tweet-header"> <span className="avatar"><img src={currentUser.img} alt="" /></span><h1>{currentUser.email}</h1></div>
             <MessageBox user={currentUser}/>
             {
                 tweets.reverse().map((tweet, index) => {
-                    return <div  className="tweet-wrapper" key={index}>
+                    return <div className="tweet-wrapper" key={index}>
                          
                         <div className="tweet-header">
-                            <h1>{tweet.user}</h1>
+                            <span className="avatar"><img src={tweet.user_img} alt="" /></span><h1>{tweet.user}</h1>
                             
                         </div>
                         <div  className="tweet-content">
                             <p >{tweet.content}</p>
                         </div>
-                        <div onClick={() => viewReplies()} className="element-row">
+                        <div className="element-row">
                             <div className="like-row">
                             <BsHeart className="like" onClick={() => like(tweet)} size="30"/>
                             <span>{tweet.likes || 0}</span>
@@ -104,14 +93,18 @@ const Tweets  = ({currentUser, setOpen, setCurrentTweet}) => {
                             
                             <span>{tweet.replies.length}</span>
 
-                            <button onClick={viewReplies()}>Replies</button>
+                            
                             </div>
                             
     
                         </div>
-                        <div className="replies" ref={replyList}>
+                        <div className="replies">
                                 {tweet.replies.map((reply, index) => {
-                                    return <div key={index}>{reply.user}</div>
+                                    return <div key={index}>
+                                    <div className="tweet-header"><span className="avatar"><img src={reply.img} /></span><h1>{reply.user}</h1></div>
+                                    <div className="tweet-content"><p>{reply.content}</p></div>
+                                    </div>
+                                    
                                 })}
                             </div>
                         
@@ -124,5 +117,6 @@ const Tweets  = ({currentUser, setOpen, setCurrentTweet}) => {
     )
 
 }
+
 
 export default Tweets;

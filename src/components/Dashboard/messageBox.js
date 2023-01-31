@@ -1,35 +1,51 @@
+import axios from "axios";
 import { useState} from "react";
 import { BsImage, BsEmojiSmile } from "react-icons/bs";
+import { Form } from "react-router-dom";
 
 const MessageBox = ({user}) => {
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
 
     
 
     const [tweet, setTweet] = useState({
-        user: user[0].email,
+        user: user.email,
+        user_img: user.img,
         content: '',
     })
 
     function onChange(value){
+        
         return setTweet((prev) =>{
             return {...prev, ...value}
         })
+
+        
     }
 
     async function createMessage(e){
 
+
         e.preventDefault();
+
+        
 
         const newTweet = {...tweet}
 
-        const response = await fetch('http://localhost:5000/api/tweets/post', {
-            method: 'POST',
-            headers:{
-                'Content-Type' : 'application/json',
-            },
-            body: JSON.stringify(newTweet)
+        const tweetData = new FormData();
 
-        })
+        tweetData.append('user', newTweet.user)
+        tweetData.append('content', newTweet.content)
+        tweetData.append('user_img', newTweet.user_img)
+
+        console.log(newTweet);
+
+        const response = await axios.post('http://localhost:5000/api/tweets/post', tweetData, config );
 
         
 

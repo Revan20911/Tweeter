@@ -2,6 +2,7 @@ import MessageBox from "../Dashboard/messageBox"
 import {useState} from 'react';
 import { Box, Modal } from "@mui/material";
 import { BsX } from "react-icons/bs";
+import { useRouteLoaderData } from "react-router-dom";
 
 const style = {
     position: 'absolute',
@@ -22,11 +23,12 @@ const style = {
     
   };
   
-const ReplyModal = ({open, setOpen, currentTweet}) => {
+const ReplyModal = ({user, open, setOpen, currentTweet}) => {
 
     
     const [reply, setReply] = useState({
-        user: localStorage.getItem('user'),
+        user: user.email,
+        img: user.img,
         content: '',
     })
 
@@ -47,7 +49,7 @@ const ReplyModal = ({open, setOpen, currentTweet}) => {
 
         const id = currentTweet._id;
 
-        console.log(open)
+        
 
         const replyArray = [...currentTweet.replies, newReply]
 

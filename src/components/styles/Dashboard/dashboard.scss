@@ -15,8 +15,9 @@
 
         border-bottom: 1px solid rgb(206, 202, 202);
         background-color: white;
-        opacity: 0.8;
+        
         position: absolute;
+        top: 0;
         z-index: 1;
 
         
@@ -36,6 +37,7 @@
             align-items: flex-end;
             margin-bottom: 0;
             font-weight: 700;
+            box-shadow: 0px 2px 3px 0px  rgb(206, 202, 202);
             
 
             a{
@@ -91,6 +93,7 @@
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
+    box-shadow: 0px 5px 5px  rgb(206, 202, 202);
 
     
     padding-top: 10px;
@@ -178,6 +181,61 @@
     overflow-y: scroll;
     z-index: 0;
     width: fit-content;
+    
+    
+
+    
+}
+
+.tweet-header{
+
+    display: flex;
+    flex-direction: row;
+    font-family: sans-serif;
+    align-items: center;
+    
+
+    height: fit-content;
+
+    margin-top: 20px;
+
+    border-bottom: 1px solid rgb(206, 202, 202);
+
+    padding-bottom: 20px;
+
+    h1{
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    
+
+
+}
+
+.avatar{
+
+    
+
+    height: 4rem;
+    width: 4rem;
+
+    border-radius: 1.5rem;
+    margin-left: 10px;
+    
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img{
+
+        width: 4rem;
+        height: 4rem;
+        border-radius: 1.5rem;
+        
+    }
 }
 
 
@@ -185,32 +243,15 @@
 
     width: 48rem;
     height: fit-content;
-
+    overflow: hidden;
+    font-family: sans-serif;
     display: flex;
     flex-direction: column;
 
-    box-shadow: 0px  0px 5px rgb(108, 106, 106);
-
-    border-radius: 20px;
-
     margin: 1rem;
-    .tweet-header{
 
-        display: flex;
-        flex-direction: row;
+    box-shadow:  1px 1px 1px 1px rgb(206, 202, 202);
 
-        justify-content: start;
-
-        height: 2rem;
-
-        h1{
-            padding: 20px;
-            padding-bottom: 5px;
-            font-size: 1rem;
-        }
-
-
-    }
 
     .tweet-content{
         p{
@@ -220,7 +261,16 @@
 
     .replies{
 
-        display: none;
+        display: block;
+        width:100%;
+       height: fit-content;
+       overflow: scroll;
+       padding: 20px;
+
+       h1{
+
+        font-size: 1rem;
+       }
 
         
     }
@@ -228,8 +278,11 @@
     .replies-visible{
 
 
-        height: fit-content;
+        
         display: block;
+        width: 100%;
+        opacity: 1;
+
 
 
 
@@ -324,7 +377,7 @@
 
 .modal{
 
-
+    font-family: sans-serif;
     textarea{
         height: 10rem;
         width: 90%;
