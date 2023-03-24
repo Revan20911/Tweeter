@@ -9,8 +9,6 @@ const LoginForm = ({user, setUser}) =>{
 
     const navigate = useNavigate();
     
-    
-
     function onChange(value){
         return setUser((prev) =>{
             return {...prev, ...value}
@@ -47,8 +45,6 @@ const LoginForm = ({user, setUser}) =>{
 
         e.preventDefault();
 
-        console.log(user);
-
         const formData = new FormData();
 
         formData.append('email', user.email)
@@ -63,11 +59,10 @@ const LoginForm = ({user, setUser}) =>{
             console.log('A user with that Email already exists');
         }
 
-        console.log(response.data);
 
         setUser(response.data);
         localStorage.setItem('user', JSON.stringify(user))
-        console.log(localStorage.getItem('user'));
+       
 
         navigate('/home');
 
