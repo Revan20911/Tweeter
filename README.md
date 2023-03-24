@@ -2,7 +2,7 @@
 
 Tweeter is my rendition of a Twitter style microblogging web application built using the MERN stack. 
 
-LIVE: definitely-not-tweeter.netlify.app
+LIVE: [definitely-not-tweeter.netlify.app](https://definitely-not-tweeter.netlify.app/)
 
 ## Features
 
