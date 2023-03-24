@@ -21,13 +21,13 @@ const App = () => {
 
       const userData = new FormData()
 
-      userData.append('email', user.email);
+      userData.append('email', 'test');
 
-      const response = await axios.get(`http://localhost:5000/api/users/${user.email}`)
+//       const response = await axios.get(`http://localhost:5000/api/users/${user.email}`)
 
-      const userInfo = await response.data;
+//       const userInfo = await response.data;
 
-      localStorage.setItem('user', JSON.stringify(userInfo));
+      localStorage.setItem('user', JSON.stringify(userData));
 
     }
 
